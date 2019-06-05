@@ -1,0 +1,7 @@
+<template name='loading'>
+  <view class='cntloading'>{{text||'加载中...'}}
+    <view class='cl1'></view>
+    <view class='cl2'></view>
+    <view class='cl3'></view>
+  </view>
+</template>
