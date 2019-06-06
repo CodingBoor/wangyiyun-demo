@@ -11,8 +11,10 @@ Page({
    */
   data: {
     tabidx: 0,
+    thisday:(new Date()).getDate(),
     rec: {
       idx: 0, loading: false,
+      res: [],
     },
     playlist: {
       idx: 1, loading: false,
@@ -154,21 +156,23 @@ Page({
       }
     })
     //个性推荐内容,歌单，新歌，mv，电台
-    // async.map(['personalized', 'personalized/newsong', 'personalized/mv', 'personalized/djprogram'], function (item, callback) {
-    //   wx.request({
-    //     url: bsurl + item,
-    //     data: { cookie: app.globalData.cookie },
-    //     success: function (res) {
-    //       callback(null, res.data.result)
-    //     }
-    //   })
-    // }, function (err, results) {
-    //   console.log(err)
-    //   rec.loading = true;
-    //   rec.re = results
-    //   that.setData({
-    //     rec: rec
-    //   })
-    // });
+    async.map(['personalized', 'personalized/newsong', 'personalized/mv'], function (item, callback) {
+      wx.request({
+        url: bsurl + item,
+        data: { cookie: app.globalData.cookie },
+        success: function (res) {
+          console.log("success", res)
+          callback(null, res.data.result)
+        }
+      })
+    }, function (err, results) {
+      console.log("error",err)
+      console.log("results", results)
+      rec.loading = true;
+      rec.re = results
+      that.setData({
+        rec: rec
+      })
+    });
   }
 })

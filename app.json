@@ -1,6 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/recsongs/recsongs",
+    "pages/playlist/playlist",
+    "pages/fm/fm",
+    "pages/mv/mv",
+    "pages/new/new",
     "pages/me/me",
     "pages/index/index",
     "pages/logs/logs"

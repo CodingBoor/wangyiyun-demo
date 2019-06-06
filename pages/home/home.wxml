@@ -1,5 +1,6 @@
 <!--pages/home/home.wxml-->
 <import src="../../utils/loading.wxml"/>
+<import src="../../utils/image.wxml"/>
 <view id="header" class="tab">
   <view class="tab-item  {{rec.idx==tabidx?'tbi-cur':''}}" bindtap="switchtab" data-t="0">
     <text class="tbi-text">个性推荐</text>
@@ -26,56 +27,56 @@
       </swiper-item>
     </swiper>
     <view wx:if="{{!rec.loading}}" id="album_loading">
-      <image src="../../../image/cm2_discover_icn_start_big@2x.png"></image>
+      <image src="../../image/cm2_discover_icn_start_big@2x.png"></image>
       正在为您生成个性化推荐...</view>
     <view wx:else>
       <view id="rec_nav">
         <view>
-          <navigator url="../fm/index">
+          <navigator url="../fm/fm">
             <view class="recn_ico">
-              <image src="../../../image/cm2_discover_icn_fm-ip6@2x.png"></image>
+              <image src="../../image/cm2_discover_icn_fm-ip6@2x.png"></image>
             </view>
             私人FM
           </navigator>
         </view>
         <view>
-          <navigator url="../recsongs/index">
+          <navigator url="../recsongs/recsongs">
             <view class="recn_ico">{{thisday}}</view>
             每日歌曲推荐
           </navigator>
         </view>
         <view>
-          <navigator url="../playlist/index?pid=3778678">
+          <navigator url="../playlist/playlist?pid=3778678">
             <view class="recn_ico">
-              <image src="../../../image/cm2_discover_icn_upbill-ip6@2x.png"></image>
+              <image src="../../image/cm2_discover_icn_upbill-ip6@2x.png"></image>
             </view>
             云音乐热歌榜
           </navigator>
         </view>
       </view>
 
-      <!--playlist-->
+      <!--playlist 推荐歌单-->
       <view class="st_title">
-        <image width="30" mode="widthFix" src="../../../image/cm2_discover_icn_recmd@2x.png" />推荐歌单
+        <image mode="widthFix" src="../../image/cm2_discover_icn_recmd@2x.png" />推荐歌单
         <view class="rbtn"  bindtap="switchtab" data-t="1">更多></view>
       </view>
       <view class='flex-boxlist'>
         <view class="tl_cnt" wx:for-items="{{rec.re[0]}}" wx:key="{{item.id}}">
-          <navigator url="../playlist/index?pid={{item.id}}&from=toplist">
+          <navigator url="../playlist/playlist?pid={{item.id}}&from=toplist">
             <view class="cover">
               <image src="{{item.picUrl}}?param=200y200" class="music_cover" />
               <view class="img_playcount">
-                <image src="../../../image/p0.png" />{{item.playCount}}</view>
+                <image src="../../image/p0.png" />{{item.playCount}}</view>
             </view>
             <text class="name">{{item.name}}</text>
           </navigator>
         </view>
       </view>
 
-      <!--newsongs-->
+      <!--newsongs 最新音乐-->
       <view class="st_title">
-        <image width="30" mode="widthFix" src="../../../image/cm2_discover_icn_newest@2x.png" />最新音乐
-        <navigator class="rbtn" url="../new/index">更多></navigator>
+        <image width="30" mode="widthFix" src="../../image/cm2_discover_icn_newest@2x.png" />最新音乐
+        <navigator class="rbtn" url="../new/new">更多></navigator>
       </view>
       <view class='flex-boxlist'>
         <view class="tl_cnt" wx:for-items="{{rec.re[1]}}" wx:for-index="idx" wx:if="{{idx<6}}" wx:for-item="re" wx:key="{{re.id}}">
@@ -92,17 +93,17 @@
         </view>
       </view>
 
-      <!--mv-->
+      <!--mv 视频-->
       <view class="st_title">
-        <image width="30" mode="widthFix" src="../../../image/cm2_discover_icn_mv@2x.png" />推荐Mv
+        <image width="30" mode="widthFix" src="../../image/cm2_discover_icn_mv@2x.png" />推荐Mv
         <view class="rbtn" >更多></view>
       </view>
       <view class='flex-boxlist mvs flex-two'>
         <view wx:for="{{rec.re[2]}}" class="tl_cnt" wx:for-item="re" wx:key="{{re}}">
-          <navigator url="../mv/index?id={{re.id}}">
+          <navigator url="../mv/mv?id={{re.id}}">
             <view class="cover">
               <view class="img_playcount">
-                <template is="image" data="{{src:'../../../image/video.png',width:28,height:20}}" />{{re.playCount}}</view>
+                <template is="image" data="{{src:'../../image/video.png',width:28,height:20}}" />{{re.playCount}}</view>
               <image src="{{re.picUrl}}?param=320y180" class="mv_cover" />
             </view>
             <view class="tl_info">
@@ -115,7 +116,7 @@
 
       <!--dj-->
       <view class="st_title">
-        <image width="30" mode="widthFix" src="../../../image/cm2_discover_icn_radio@2x.png" />主播电台
+        <image width="30" mode="widthFix" src="../../image/cm2_discover_icn_radio@2x.png" />主播电台
         <view class="rbtn"  bindtap="switchtab" data-t="2">更多></view>
       </view>
       <view class='flex-boxlist'>
