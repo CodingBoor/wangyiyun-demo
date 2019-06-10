@@ -2,6 +2,7 @@
 <import src="../../utils/loading.wxml" />
 <import src="../../utils/image.wxml" />
 <view id="header" class="tab">
+
   <view class="tab-item  {{rec.idx==tabidx?'tbi-cur':''}}" bindtap="switchtab" data-t="0">
     <text class="tbi-text">个性推荐</text>
   </view>
