@@ -34,6 +34,11 @@ Page({
       offset: 0,
       limit: 20
     },
+
+    catelist:{
+      res: {},
+      checked: {},
+    },
   },
 
   /**
@@ -94,12 +99,41 @@ Page({
 
   },
 
+/**
+ * 上拉加载更多
+ */
+  onReachBottom:function() {
+    if(this.data.tabidx == 1) {
+      this.gplaylist(1); // 上拉加载更多歌单
+    }
+  },
+
   switchtab: function(e) {
      var that = this
      var t = e.currentTarget.dataset.t;
      this.setData({tabidx: t});
     if (t == 1 && !this.data.playlist.loading) {
       this.gplaylist()
+    }
+
+    /**
+     * 获取排行榜数据
+     */
+    if (t == 3 && !this.data.sort.loading) {
+      // this.data.sort.loading = false;
+      // this.setData({
+      //   sort: this.data.sort,
+      // })
+      wx.request({
+        url: bsurl + 'toplist/detail',
+        success: function(res) {
+          res.data.idx = 3;
+          res.data.loading = true;
+          that.setData({
+            sort: res.data,
+          })
+        }
+      })
     }
   },
 
@@ -156,7 +190,7 @@ Page({
       }
     })
     //个性推荐内容,歌单，新歌，mv，电台
-    async.map(['personalized', 'personalized/newsong', 'personalized/mv'], function (item, callback) {
+    async.map(['personalized', 'personalized/newsong', 'personalized/mv', 'personalized/djprogram'], function (item, callback) {
       wx.request({
         url: bsurl + item,
         data: { cookie: app.globalData.cookie },

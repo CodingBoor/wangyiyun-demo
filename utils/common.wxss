@@ -2,7 +2,7 @@
   padding: 50rpx 0;
   text-align: center;
   color: #888;
-  font-size: 56rpx;
+  font-size: 26rpx;
 }
 
 .tab {
@@ -52,6 +52,7 @@
 }
 
 .flex-boxlist {
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
 }
@@ -68,7 +69,7 @@
   color: #666;
 }
 
-.tl_cnt .cover .music_cover, .tl_cnt .cover .mv_cover {
+.tl_cnt .cover .music_cover, .tl_cnt .cover .mv_cover, .cover .album_cover {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -153,3 +154,104 @@
   background-repeat: no-repeat;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACkCAMAAAAE/tP1AAAA1VBMVEXh4+Ti5OX////+/v7y8/Pk5ufj5ebr7e38/Pzp6+zq6+zr7O3l5ufs7e7t7u/w8fLl5+jo6erz9PT29vf3+Pjx8vL6+vr7/Pz5+fn9/f3o6urp6uvv8PD5+vr8/f329/f39/fu7/D4+fnz9PX09fXp6+v19vb19fbn6Ont7+/4+Pnv8PHv8fH6+vv6+/v7+/v7+/zx8fLn6erm6Ojz8/Tl5+f8/P3m5+jj5eX5+frm6Ont7u7j5OX9/v7x8vPn6enq7Ozk5ub4+Pjw8fHy8/Tu8PDo6uvOKV4BAAAAHGlET1QAAAACAAAAAAAAAFIAAAAoAAAAUgAAAFIAAAI51mLEigAAAgVJREFUeNrsmVtX2lAQRs/5cqMEg0gAQ4IYoFQuloq3aqu9rfb//6Q+VMWJxZKsvs23n1iLMw+z1znMBWMIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBijDHGCztxz7kauCldvMT2s2kPTwxaVPKc672LAYrk9PIHv948ToSa2uOHiHbsOp+shB3n+33oGesFcwBw1qr1XAbuyBF6uuPoZPP9zAEw0mrnc7psXwk7R8Nl+rFwKgKAtwr13EbjrnxaIze4/OvREYCxvpZHPq3VJF/brecDAKd69DQWsXxayXGz7v9DKQBHTV0/EHoGF3vXu9Q7AFBi6PzDpuWZZn27a5weRfsPjeFRJ/RKBapRZLsAMA+80pFqFP0EgFmVSDWKapWHLS2KflWfI7QoygAE5X/A0uUw0aLIBfCtXAV8vjvSoCgpk6ftL9pyd6RB0c55NgL35uVmjYoeLk8rm9bE+H/ohp6hosf53z0U839tmrWsqor2Sp52ncvLgxs3aOgr+lvy9MJ7uZdN2ovigKtY0Zf8Xa+4HdlX3DrKPP2vnbm8PMNlapV315s8T2aFf4S6B6+v1lQp8utn8Z3cy/5Ifc5omzzfi8tzOv50zjG2kOcTd3HzjV/hjSpRtJpEt1yGbMvTic/qfrVQDiBUREVUREVUREVUREVUREVUREVUREVUREX/md8AAAD//wZtN8wAAAG1SURBVO3Yy07CQACF4elfWlsD4Q6VBbCQ6EaCuiHRxI3v/0wuKFjoQLQDXqbn21nC5k9tmWPM7wL4+a/+K0qkREr0pxIF1+/ZNAynWe/qVYksOr2QnbDXUaLDO+ixEAggHAZKVBRllGSREhUKrQAYN9IoCDppY/PnSol24geA5CXYXWkl23tJiYwxxtwCzOO9anMlKlgA9A+v9pXoUwaMgtI7bqREW/cAk/L1iRJttYGZ7YOZEuUGQMv2QUuJcgnQsR5JlCgXAoH1UKJEhUTrY4lCD4t8f9FIgOdj/2iJd4GqLBonH9cD3+6gSovGyZd+269CFReNN4Bu+XoX4MmvQlUXjRMHkMyrQtUXjfT4MTb1KpHDonEH0N//ah/gzqtCLotGvLTfgMvYq0ROi0ZzvHmMDReRMdFimD/Vml4Vclw07C9Dv174rotGMLT8pPKL+6Jh+WHul3MsGqXjnV+0aHwp0VqJKi8aN+pTt0XjAi/9tvrUa9G4xAEkU516LRoOarJouKjJouGkFouGozosGq5qsGi4837ROMud5PeiISIiIiIiIiIiIiIiIiIiIiIiIiLn9gG6Njo2bh6E0wAAAABJRU5ErkJggg==");
 }
+
+/* 歌单 */
+.listheader {
+  margin: 25rpx 15rpx 10rpx;
+  overflow: hidden;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes cnloading {
+  0% {
+    transform: translateY(0rpx);
+  }
+
+  50% {
+    transform: translateY(20rpx);
+  }
+
+  100% {
+    transform: translateY(0rpx);
+  }
+}
+
+.cntloading text {
+  width: 5rpx;
+  height: 30rpx;
+  background-color: #d33a31;
+  position: relative;
+  display: inline-block;
+  margin-right: 6rpx;
+  border-radius: 3rpx;
+  animation: cnloading 0.9s linear infinite;
+  transform-origin: center bottom;
+}
+
+.cntloading view {
+  display: inline-block;
+  vertical-align: baseline;
+  height: 30rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+
+.cntloading .cl2 {
+  animation-delay: -.6s;
+}
+
+.cntloading .cl3 {
+  animation-delay: -.3s;
+}
+
+/* 排行榜 */
+.album_cover {
+  background-size: cover;
+  background-image: url(data:image/png;base64,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);
+}
+
+.fl-image image{
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+
+}
+
+.fl-image {
+  position: relative;
+  padding: 10rpx 0;
+  margin: 0 20rpx;
+}
+
+.tl_info view {
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flexlist .flexlist {
+  flex: 1;
+  padding: 10rpx 10rpx 10rpx 0;
+  margin: 0;
+  align-items: center;
+  margin-left: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 1.5;
+  position: relative;
+  border-bottom: 1rpx solid #e1e2e3;
+}
+
